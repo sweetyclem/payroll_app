@@ -1,0 +1,8 @@
+<h1>Payroll Data</h1>
+<%= render @payroll_data %>
+<h2>Import Data</h2>
+<%= form_tag import_payroll_data_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+</table>
