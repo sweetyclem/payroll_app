@@ -1,0 +1,13 @@
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %>">
+    <%= value %>
+  </div>
+<% end %>
+
+<h1>Payroll Data</h1>
+<br>
+<h2>Import Data</h2>
+<%= form_tag import_payroll_reports_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
