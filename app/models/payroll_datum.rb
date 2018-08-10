@@ -9,7 +9,6 @@ class PayrollDatum < ApplicationRecord
     }
     (2..spreadsheet.last_row - 1).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      puts row.to_hash
       payroll_datum = new
       payroll_datum.attributes = row.to_hash
       payroll_datum.save!

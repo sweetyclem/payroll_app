@@ -1,8 +1,19 @@
 <h1>Payroll Data</h1>
-<%= render @payroll_data %>
 <h2>Import Data</h2>
 <%= form_tag import_payroll_data_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Import" %>
 <% end %>
+
+<br><br>
+<table class="responstable">
+  <tr>
+      <th><%= t('en.payroll_datum.date') %></th>
+      <th><%= t('en.payroll_datum.hours_worked') %></th>
+      <th><%= t('en.payroll_datum.employee_id') %></th>
+      <th><%= t('en.payroll_datum.job_group') %></th>
+      <th><%= t('en.payroll_datum.created_at') %></th>
+      <th><%= t('en.payroll_datum.updated_at') %></th>
+  </tr>
+  <%= render @payroll_data %>
 </table>

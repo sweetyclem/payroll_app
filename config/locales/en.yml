@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  payroll_datum:
+      date: 'Date'
+      hours_worked: "HoursWorked"
+      employee_id: "Employee id"
+      job_group: "Job Group"
+      created_at: "Created at"
+      updated_at: "Updated at"
