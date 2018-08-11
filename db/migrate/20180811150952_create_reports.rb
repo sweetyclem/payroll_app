@@ -5,7 +5,7 @@ class CreateReports < ActiveRecord::Migration[5.2]
       t.integer :pay_year
       t.integer :pay_period
       t.references :employee, foreign_key: true
-      t.decimal :amount_paid
+      t.float :amount_paid, :default => 0
       t.integer :upload_number
 
       t.timestamps
