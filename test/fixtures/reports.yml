@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pay_month: 1
+  pay_year: 1
+  pay_period: 1
+  employee: one
+  amount_paid: 9.99
+  upload_number: 1
+
+two:
+  pay_month: 1
+  pay_year: 1
+  pay_period: 1
+  employee: two
+  amount_paid: 9.99
+  upload_number: 1

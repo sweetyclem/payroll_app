@@ -1,2 +1,0 @@
-class PayrollItemController < ApplicationController
-end

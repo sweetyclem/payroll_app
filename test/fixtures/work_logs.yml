@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-08-11
+  hours_worked: 9.99
+  upload_number: 1
+  employee: one
+
+two:
+  date: 2018-08-11
+  hours_worked: 9.99
+  upload_number: 1
+  employee: two

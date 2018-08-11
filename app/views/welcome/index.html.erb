@@ -7,7 +7,7 @@
 <h1>Payroll Data</h1>
 <br>
 <h2>Import Data</h2>
-<%= form_tag import_payroll_reports_path, multipart: true do %>
+<%= form_tag import_work_logs_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Import" %>
 <% end %>

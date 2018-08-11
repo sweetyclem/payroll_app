@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PayrollDatumTest < ActiveSupport::TestCase
+class WorkLogTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

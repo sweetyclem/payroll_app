@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PayrollDataControllerTest < ActionDispatch::IntegrationTest
+class EmployeeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
