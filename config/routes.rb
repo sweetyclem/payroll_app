@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :payroll_reports do
     collection do
       post :import
-      get 'index'
+      get 'show'
     end
   end
   
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     collection do
       post :import
     end
-    get 'index'
+    get 'show'
   end
 
   root to: 'welcome#index'

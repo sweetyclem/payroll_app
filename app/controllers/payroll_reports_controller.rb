@@ -1,6 +1,6 @@
 class PayrollReportsController < ApplicationController
   def index
-    @payroll_reports = PayrollReport.order(:employee_id, :pay_period)
+    @payroll_reports = PayrollReport.order(:id)
   end
 
   def import
