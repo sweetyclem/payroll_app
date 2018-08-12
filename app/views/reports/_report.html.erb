@@ -1,0 +1,11 @@
+<tr>
+  <td><%= report.employee_id %></td>
+  <td><%= if report.pay_period == 1
+            "1/#{report.pay_month}/#{report.pay_year} - 15/#{report.pay_month}/#{report.pay_year}"
+          else
+          last_day = Date.civil(report.pay_year, report.pay_month, -1)
+          "16/#{report.pay_month}/#{report.pay_year} - #{last_day}/#{report.pay_month}/#{report.pay_year}"
+          end %>
+  </td>
+  <td><%= report.amount_paid %></td>
+</tr>

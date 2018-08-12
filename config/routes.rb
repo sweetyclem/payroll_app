@@ -4,6 +4,8 @@ Rails.application.routes.draw do
       post :import
     end
   end
+  
+  get '/display/:upload_number', to: 'reports#display'
 
   root to: 'welcome#index'
 end

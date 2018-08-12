@@ -24,6 +24,6 @@ class WorkLog < ApplicationRecord
       work_log.save!
       employee_ids.push(spreadsheet.row(i)[2])
     end
-    return employee_ids, upload_number
+    return employee_ids.uniq, upload_number
   end
 end
