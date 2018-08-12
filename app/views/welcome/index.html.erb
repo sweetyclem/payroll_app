@@ -5,9 +5,14 @@
 <% end %>
 
 <h1>Payroll Data</h1>
-<br>
-<h2>Import Data</h2>
-<%= form_tag import_work_logs_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8">      
+        <h2>Import Data</h2>
+      <%= form_tag import_work_logs_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import" %>
+      <% end %>
+    </div>
+  </div>
+</div>

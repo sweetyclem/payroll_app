@@ -7,13 +7,19 @@
 <h1>Payroll report</h1>
 
 <br><br>
-<table class="responstable">
-  <tr>
-    <th><%= t('en.report.employee_id') %></th>
-    <th><%= t('en.report.pay_period') %></th>
-    <th><%= t('en.report.amount_paid') %></th>
-  </tr>
-  <% @reports.each do |report| %>
-    <%= render partial: "report", locals: { report: report } %>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-10">
+      <table class="table table-striped ">
+        <tr>
+          <th><%= t('en.report.employee_id') %></th>
+          <th><%= t('en.report.pay_period') %></th>
+          <th><%= t('en.report.amount_paid') %></th>
+        </tr>
+        <% @reports.each do |report| %>
+        <%= render partial: "report", locals: { report: report } %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
