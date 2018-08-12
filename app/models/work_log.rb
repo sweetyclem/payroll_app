@@ -9,7 +9,7 @@ class WorkLog < ApplicationRecord
       column_name == "date"? column_name : column_name.gsub!(" ", "_")
     }
     upload_number = Integer(spreadsheet.row(spreadsheet.last_row)[1])
-    raise Exception.new("Upload number already exists") if WorkLog.where(upload_number: upload_number)
+    raise Exception.new("Upload number already exists") if !WorkLog.where(upload_number: upload_number).empty?
     
     employee_ids = []
     
