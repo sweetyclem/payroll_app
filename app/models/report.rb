@@ -5,8 +5,6 @@ class Report < ApplicationRecord
     employee_ids.each do |employee_id|
       employee = Employee.find(employee_id)
       employee.work_logs.each do |work_log|
-        puts "--------------IDS " + employee_ids.inspect
-        puts "--------------WORK LOG " + work_log.inspect
         if work_log.upload_number == upload_number
           if work_log.date.day >= 1 && work_log.date.day <= 15
             pay_period = 1

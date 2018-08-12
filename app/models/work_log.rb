@@ -9,6 +9,7 @@ class WorkLog < ApplicationRecord
       column_name == "date"? column_name : column_name.gsub!(" ", "_")
     }
     upload_number = Integer(spreadsheet.row(spreadsheet.last_row)[1])
+    raise Exception.new("Upload number already exists") if WorkLog.where(upload_number: upload_number)
     
     employee_ids = []
     
@@ -19,7 +20,7 @@ class WorkLog < ApplicationRecord
       work_log = new
       work_log.employee_id = Integer(spreadsheet.row(i)[2])
       work_log.date = Date.parse(spreadsheet.row(i)[0])
-      work_log.hours_worked = Integer(spreadsheet.row(i)[1])
+      work_log.hours_worked = Float(spreadsheet.row(i)[1])
       work_log.upload_number = upload_number
       work_log.save!
       employee_ids.push(spreadsheet.row(i)[2])
