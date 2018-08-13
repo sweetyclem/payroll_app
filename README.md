@@ -2,10 +2,10 @@
 
 ## Install
 
-* [Install docker] (https://docs.docker.com/install/#supported-platforms)
-* [Install docker compose] (https://docs.docker.com/compose/install/#install-compose) if not already installed
+* [Install docker](https://docs.docker.com/install/#supported-platforms)
+* [Install docker compose](https://docs.docker.com/compose/install/#install-compose) if not already installed
 
-For linux, [add your user] (https://docs.docker.com/install/linux/linux-postinstall/) to the docker group with the following
+For linux, [add your user](https://docs.docker.com/install/linux/linux-postinstall/) to the docker group with the following
 
 ```bash
 sudo usermod -aG docker $USER
