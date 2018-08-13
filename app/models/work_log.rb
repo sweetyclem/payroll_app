@@ -1,5 +1,6 @@
 class WorkLog < ApplicationRecord
   belongs_to :employee
+  validates_presence_of :date, :hours_worked, :employee_id, :upload_number
   validates :date, uniqueness: { scope: :employee_id }
   
   def self.import(file)
