@@ -1,0 +1,13 @@
+.Gemfile
+.byebug_history
+.ruby-version
+/*/doc/
+/*/test/tmp/
+/.bundle
+/dist/
+/doc/
+/guides/output/
+debug.log
+node_modules/
+package-lock.json
+pkg/

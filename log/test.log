@@ -398,3 +398,378 @@ WorkLogTest: test_Should_not_save_a_work_log_if_one_exists_for_the_same_employee
   [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2018-08-27"], ["employee_id", 1], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "employees"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "work_logs"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "reports"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "employees" ("job_group", "created_at", "updated_at", "id") VALUES ('MyString', '2018-08-27 13:54:13.124124', '2018-08-27 13:54:13.124124', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "employees" ("job_group", "created_at", "updated_at", "id") VALUES ('MyString', '2018-08-27 13:54:13.124124', '2018-08-27 13:54:13.124124', 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "created_at", "updated_at", "id", "employee_id") VALUES ('2018-08-11', 9.99, 1, '2018-08-27 13:54:13.126066', '2018-08-27 13:54:13.126066', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "created_at", "updated_at", "id", "employee_id") VALUES ('2018-08-11', 9.99, 1, '2018-08-27 13:54:13.126066', '2018-08-27 13:54:13.126066', 298486374, 298486374)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "reports" ("pay_month", "pay_year", "pay_period", "amount_paid", "upload_number", "created_at", "updated_at", "id", "employee_id") VALUES (1, 1, 1, 9.99, 1, '2018-08-27 13:54:13.128461', '2018-08-27 13:54:13.128461', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "reports" ("pay_month", "pay_year", "pay_period", "amount_paid", "upload_number", "created_at", "updated_at", "id", "employee_id") VALUES (1, 1, 1, 9.99, 1, '2018-08-27 13:54:13.128461', '2018-08-27 13:54:13.128461', 298486374, 298486374)[0m
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------------------------------------------
+WorkLogTest: test_Should_not_save_a_work_log_if_one_exists_for_the_same_employee_and_same_date
+----------------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2018-08-27"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2018-08-27"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+WorkLogTest: test_invalid_without_upload_number
+-----------------------------------------------
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2018-08-27"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+WorkLogTest: test_invalid_without_employee_id
+---------------------------------------------
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" IS NULL LIMIT ?[0m  [["date", "2018-08-27"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------
+WorkLogTest: test_valid_work_log
+--------------------------------
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2018-12-01"], ["employee_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------
+WorkLogTest: test_invalid_without_hours_worked
+----------------------------------------------
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2018-08-27"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+WorkLogTest: test_invalid_without_date
+--------------------------------------
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" IS NULL AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["employee_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------
+WorkLogTest: test_import_work_logs
+----------------------------------
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."upload_number" = ? LIMIT ?[0m  [["upload_number", 43], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."upload_number" = ? LIMIT ?[0m  [["upload_number", 43], ["LIMIT", 1]]
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Create (0.3ms)[0m  [1m[32mINSERT INTO "employees" ("id", "job_group", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["job_group", "A"], ["created_at", "2018-08-27 13:54:13.197348"], ["updated_at", "2018-08-27 13:54:13.197348"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-14"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-14"], ["hours_worked", 7.5], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:54:13.204069"], ["updated_at", "2018-08-27 13:54:13.204069"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Create (0.1ms)[0m  [1m[32mINSERT INTO "employees" ("id", "job_group", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 2], ["job_group", "B"], ["created_at", "2018-08-27 13:54:13.207675"], ["updated_at", "2018-08-27 13:54:13.207675"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-09"], ["employee_id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-09"], ["hours_worked", 4.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:54:13.210966"], ["updated_at", "2018-08-27 13:54:13.210966"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-10"], ["employee_id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-10"], ["hours_worked", 4.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:54:13.215305"], ["updated_at", "2018-08-27 13:54:13.215305"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Create (0.1ms)[0m  [1m[32mINSERT INTO "employees" ("id", "job_group", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 3], ["job_group", "A"], ["created_at", "2018-08-27 13:54:13.218268"], ["updated_at", "2018-08-27 13:54:13.218268"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-09"], ["employee_id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-09"], ["hours_worked", 11.5], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:54:13.221011"], ["updated_at", "2018-08-27 13:54:13.221011"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-08"], ["employee_id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.4ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-08"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:54:13.226789"], ["updated_at", "2018-08-27 13:54:13.226789"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-11"], ["employee_id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-11"], ["hours_worked", 3.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:54:13.235682"], ["updated_at", "2018-08-27 13:54:13.235682"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-02"], ["employee_id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-02"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:54:13.240222"], ["updated_at", "2018-08-27 13:54:13.240222"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-03"], ["employee_id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-03"], ["hours_worked", 12.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:54:13.244860"], ["updated_at", "2018-08-27 13:54:13.244860"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-04"], ["employee_id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-04"], ["hours_worked", 11.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:54:13.249483"], ["updated_at", "2018-08-27 13:54:13.249483"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.0ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Create (0.1ms)[0m  [1m[32mINSERT INTO "employees" ("id", "job_group", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 4], ["job_group", "B"], ["created_at", "2018-08-27 13:54:13.252442"], ["updated_at", "2018-08-27 13:54:13.252442"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-06"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-06"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.255104"], ["updated_at", "2018-08-27 13:54:13.255104"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-21"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-21"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:54:13.260581"], ["updated_at", "2018-08-27 13:54:13.260581"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-22"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.7ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-22"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:54:13.266556"], ["updated_at", "2018-08-27 13:54:13.266556"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-23"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-23"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.274155"], ["updated_at", "2018-08-27 13:54:13.274155"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-24"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-24"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.279597"], ["updated_at", "2018-08-27 13:54:13.279597"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-25"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-25"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.283916"], ["updated_at", "2018-08-27 13:54:13.283916"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-14"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-14"], ["hours_worked", 7.5], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:54:13.288065"], ["updated_at", "2018-08-27 13:54:13.288065"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-09"], ["employee_id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-09"], ["hours_worked", 4.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:54:13.293301"], ["updated_at", "2018-08-27 13:54:13.293301"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-10"], ["employee_id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-10"], ["hours_worked", 4.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:54:13.300270"], ["updated_at", "2018-08-27 13:54:13.300270"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-09"], ["employee_id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-09"], ["hours_worked", 11.5], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:54:13.306036"], ["updated_at", "2018-08-27 13:54:13.306036"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-08"], ["employee_id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-08"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:54:13.310659"], ["updated_at", "2018-08-27 13:54:13.310659"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-12"], ["employee_id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-12"], ["hours_worked", 3.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:54:13.315036"], ["updated_at", "2018-08-27 13:54:13.315036"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-02"], ["employee_id", 3], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-02"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:54:13.319999"], ["updated_at", "2018-08-27 13:54:13.319999"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-03"], ["employee_id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-03"], ["hours_worked", 12.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:54:13.325412"], ["updated_at", "2018-08-27 13:54:13.325412"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-04"], ["employee_id", 2], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-04"], ["hours_worked", 11.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:54:13.333865"], ["updated_at", "2018-08-27 13:54:13.333865"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-06"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-06"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.338297"], ["updated_at", "2018-08-27 13:54:13.338297"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-21"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-21"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:54:13.342790"], ["updated_at", "2018-08-27 13:54:13.342790"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-22"], ["employee_id", 1], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-22"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:54:13.346990"], ["updated_at", "2018-08-27 13:54:13.346990"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-23"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-23"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.351076"], ["updated_at", "2018-08-27 13:54:13.351076"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-24"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-24"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.355136"], ["updated_at", "2018-08-27 13:54:13.355136"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-25"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-25"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.360050"], ["updated_at", "2018-08-27 13:54:13.360050"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Update (0.2ms)[0m  [1m[33mUPDATE "employees" SET "job_group" = ?, "updated_at" = ? WHERE "employees"."id" = ?[0m  [["job_group", "A"], ["updated_at", "2018-08-27 13:54:13.362679"], ["id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2015-02-23"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2015-02-23"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.369214"], ["updated_at", "2018-08-27 13:54:13.369214"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Update (0.1ms)[0m  [1m[33mUPDATE "employees" SET "job_group" = ?, "updated_at" = ? WHERE "employees"."id" = ?[0m  [["job_group", "B"], ["updated_at", "2018-08-27 13:54:13.372236"], ["id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-02-24"], ["employee_id", 4], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.1ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-02-24"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:54:13.375283"], ["updated_at", "2018-08-27 13:54:13.375283"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "work_logs" WHERE "work_logs"."upload_number" = ?[0m  [["upload_number", 43]]
+  [1m[36mWorkLog Load (0.3ms)[0m  [1m[34mSELECT "work_logs".* FROM "work_logs" WHERE "work_logs"."upload_number" = ?[0m  [["upload_number", 43]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------
+EmployeeTest: test_valid_employee
+---------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+EmployeeTest: test_invalid_without_job_group
+--------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+ReportTest: test_generates_a_report
+-----------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Create (0.3ms)[0m  [1m[32mINSERT INTO "employees" ("id", "job_group", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 6], ["job_group", "A"], ["created_at", "2018-08-27 13:54:13.383281"], ["updated_at", "2018-08-27 13:54:13.383281"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2018-07-30"], ["employee_id", 6], ["LIMIT", 1]]
+  [1m[36mWorkLog Create (0.2ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2018-07-30"], ["hours_worked", 3.0], ["upload_number", 3], ["employee_id", 6], ["created_at", "2018-08-27 13:54:13.386511"], ["updated_at", "2018-08-27 13:54:13.386511"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mWorkLog Load (0.3ms)[0m  [1m[34mSELECT "work_logs".* FROM "work_logs" WHERE "work_logs"."employee_id" = ?[0m  [["employee_id", 6]]
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 6], ["pay_period", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mReport Create (0.2ms)[0m  [1m[32mINSERT INTO "reports" ("pay_period", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pay_period", 2], ["employee_id", 6], ["created_at", "2018-08-27 13:54:13.405507"], ["updated_at", "2018-08-27 13:54:13.405507"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "pay_year" = ?, "amount_paid" = ?, "upload_number" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 7], ["pay_year", 2018], ["amount_paid", 60.0], ["upload_number", 3], ["updated_at", "2018-08-27 13:54:13.407278"], ["id", 980190963]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mReport Load (0.1ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? LIMIT ?[0m  [["employee_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m

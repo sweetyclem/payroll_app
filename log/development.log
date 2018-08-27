@@ -53,3 +53,952 @@ FOREIGN KEY ("employee_id")
   ↳ bin/rails:9
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started GET "/" for 172.26.0.1 at 2018-08-27 13:52:28 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 7803ms (Views: 7791.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/work_logs/import" for 172.26.0.1 at 2018-08-27 13:52:54 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by WorkLogsController#import as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mhb9qnNgQCw53p1JjbllNuHpJk1MlH20g/bQGuwq1Oz1jOqElMOIj9/zy/BXrh3LGHTExvW3d1/m1q0uyuEHsQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x00007fab701112c8 @tempfile=#<Tempfile:/tmp/RackMultipart20180827-1-1gh8zjw.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"Import"}
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."upload_number" = ? LIMIT ?[0m  [["upload_number", 43], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:13
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[36mEmployee Create (1.5ms)[0m  [1m[32mINSERT INTO "employees" ("id", "job_group", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 1], ["job_group", "A"], ["created_at", "2018-08-27 13:52:54.049421"], ["updated_at", "2018-08-27 13:52:54.049421"]]
+  ↳ app/models/work_log.rb:20
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-14"], ["employee_id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-14"], ["hours_worked", 7.5], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:52:54.075283"], ["updated_at", "2018-08-27 13:52:54.075283"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[36mEmployee Create (0.4ms)[0m  [1m[32mINSERT INTO "employees" ("id", "job_group", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 2], ["job_group", "B"], ["created_at", "2018-08-27 13:52:54.089261"], ["updated_at", "2018-08-27 13:52:54.089261"]]
+  ↳ app/models/work_log.rb:20
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-09"], ["employee_id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-09"], ["hours_worked", 4.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:52:54.103554"], ["updated_at", "2018-08-27 13:52:54.103554"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-10"], ["employee_id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.4ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-10"], ["hours_worked", 4.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:52:54.120577"], ["updated_at", "2018-08-27 13:52:54.120577"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[36mEmployee Create (0.3ms)[0m  [1m[32mINSERT INTO "employees" ("id", "job_group", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 3], ["job_group", "A"], ["created_at", "2018-08-27 13:52:54.133373"], ["updated_at", "2018-08-27 13:52:54.133373"]]
+  ↳ app/models/work_log.rb:20
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-09"], ["employee_id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-09"], ["hours_worked", 11.5], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:52:54.147557"], ["updated_at", "2018-08-27 13:52:54.147557"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-08"], ["employee_id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-08"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:52:54.165024"], ["updated_at", "2018-08-27 13:52:54.165024"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (9.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-11"], ["employee_id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.6ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-11"], ["hours_worked", 3.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:52:54.185601"], ["updated_at", "2018-08-27 13:52:54.185601"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-02"], ["employee_id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.8ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-02"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:52:54.207361"], ["updated_at", "2018-08-27 13:52:54.207361"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-03"], ["employee_id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-03"], ["hours_worked", 12.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:52:54.226084"], ["updated_at", "2018-08-27 13:52:54.226084"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-04"], ["employee_id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.7ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-04"], ["hours_worked", 11.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:52:54.242199"], ["updated_at", "2018-08-27 13:52:54.242199"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[36mEmployee Create (0.3ms)[0m  [1m[32mINSERT INTO "employees" ("id", "job_group", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 4], ["job_group", "B"], ["created_at", "2018-08-27 13:52:54.260657"], ["updated_at", "2018-08-27 13:52:54.260657"]]
+  ↳ app/models/work_log.rb:20
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-06"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-06"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.277271"], ["updated_at", "2018-08-27 13:52:54.277271"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-21"], ["employee_id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.4ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-21"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:52:54.296470"], ["updated_at", "2018-08-27 13:52:54.296470"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-22"], ["employee_id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-22"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:52:54.313386"], ["updated_at", "2018-08-27 13:52:54.313386"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-23"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.4ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-23"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.329651"], ["updated_at", "2018-08-27 13:52:54.329651"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-24"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-24"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.347568"], ["updated_at", "2018-08-27 13:52:54.347568"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-25"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.4ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-25"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.365359"], ["updated_at", "2018-08-27 13:52:54.365359"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-14"], ["employee_id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-14"], ["hours_worked", 7.5], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:52:54.382522"], ["updated_at", "2018-08-27 13:52:54.382522"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-09"], ["employee_id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-09"], ["hours_worked", 4.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:52:54.398666"], ["updated_at", "2018-08-27 13:52:54.398666"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-10"], ["employee_id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-10"], ["hours_worked", 4.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:52:54.415921"], ["updated_at", "2018-08-27 13:52:54.415921"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-09"], ["employee_id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-09"], ["hours_worked", 11.5], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:52:54.432726"], ["updated_at", "2018-08-27 13:52:54.432726"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-08"], ["employee_id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-08"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:52:54.449129"], ["updated_at", "2018-08-27 13:52:54.449129"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-11-12"], ["employee_id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (3.0ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-11-12"], ["hours_worked", 3.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:52:54.465919"], ["updated_at", "2018-08-27 13:52:54.465919"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-02"], ["employee_id", 3], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-02"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 3], ["created_at", "2018-08-27 13:52:54.486060"], ["updated_at", "2018-08-27 13:52:54.486060"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-03"], ["employee_id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-03"], ["hours_worked", 12.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:52:54.501704"], ["updated_at", "2018-08-27 13:52:54.501704"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-04"], ["employee_id", 2], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-04"], ["hours_worked", 11.0], ["upload_number", 43], ["employee_id", 2], ["created_at", "2018-08-27 13:52:54.518599"], ["updated_at", "2018-08-27 13:52:54.518599"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-06"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-06"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.533159"], ["updated_at", "2018-08-27 13:52:54.533159"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-21"], ["employee_id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-21"], ["hours_worked", 6.0], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:52:54.551155"], ["updated_at", "2018-08-27 13:52:54.551155"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-22"], ["employee_id", 1], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (2.8ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-22"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 1], ["created_at", "2018-08-27 13:52:54.566734"], ["updated_at", "2018-08-27 13:52:54.566734"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-23"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.4ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-23"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.586973"], ["updated_at", "2018-08-27 13:52:54.586973"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-24"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.4ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-24"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.604549"], ["updated_at", "2018-08-27 13:52:54.604549"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-12-25"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.5ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-12-25"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.620590"], ["updated_at", "2018-08-27 13:52:54.620590"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[36mEmployee Update (0.3ms)[0m  [1m[33mUPDATE "employees" SET "job_group" = ?, "updated_at" = ? WHERE "employees"."id" = ?[0m  [["job_group", "A"], ["updated_at", "2018-08-27 13:52:54.635949"], ["id", 4]]
+  ↳ app/models/work_log.rb:20
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2015-02-23"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.3ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2015-02-23"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.650758"], ["updated_at", "2018-08-27 13:52:54.650758"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[36mEmployee Update (0.2ms)[0m  [1m[33mUPDATE "employees" SET "job_group" = ?, "updated_at" = ? WHERE "employees"."id" = ?[0m  [["job_group", "B"], ["updated_at", "2018-08-27 13:52:54.660868"], ["id", 4]]
+  ↳ app/models/work_log.rb:20
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "work_logs" WHERE "work_logs"."date" = ? AND "work_logs"."employee_id" = ? LIMIT ?[0m  [["date", "2016-02-24"], ["employee_id", 4], ["LIMIT", 1]]
+  ↳ app/models/work_log.rb:26
+  [1m[36mWorkLog Create (0.4ms)[0m  [1m[32mINSERT INTO "work_logs" ("date", "hours_worked", "upload_number", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["date", "2016-02-24"], ["hours_worked", 5.0], ["upload_number", 43], ["employee_id", 4], ["created_at", "2018-08-27 13:52:54.673947"], ["updated_at", "2018-08-27 13:52:54.673947"]]
+  ↳ app/models/work_log.rb:26
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/work_log.rb:26
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:6
+  [1m[36mWorkLog Load (0.2ms)[0m  [1m[34mSELECT "work_logs".* FROM "work_logs" WHERE "work_logs"."employee_id" = ?[0m  [["employee_id", 1]]
+  ↳ app/models/report.rb:7
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 1], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[36mReport Create (0.3ms)[0m  [1m[32mINSERT INTO "reports" ("pay_period", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pay_period", 1], ["employee_id", 1], ["created_at", "2018-08-27 13:52:54.708133"], ["updated_at", "2018-08-27 13:52:54.708133"]]
+  ↳ app/models/report.rb:14
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.5ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "pay_year" = ?, "amount_paid" = ?, "upload_number" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 11], ["pay_year", 2016], ["amount_paid", 150.0], ["upload_number", 43], ["updated_at", "2018-08-27 13:52:54.721184"], ["id", 1]]
+  ↳ app/models/report.rb:23
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 1], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[36mReport Create (0.2ms)[0m  [1m[32mINSERT INTO "reports" ("pay_period", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pay_period", 2], ["employee_id", 1], ["created_at", "2018-08-27 13:52:54.733204"], ["updated_at", "2018-08-27 13:52:54.733204"]]
+  ↳ app/models/report.rb:14
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.7ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "pay_year" = ?, "amount_paid" = ?, "upload_number" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 11], ["pay_year", 2016], ["amount_paid", 120.0], ["upload_number", 43], ["updated_at", "2018-08-27 13:52:54.741868"], ["id", 2]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 1], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.4ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 220.0], ["updated_at", "2018-08-27 13:52:54.754774"], ["id", 2]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 1], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 12], ["amount_paid", 300.0], ["updated_at", "2018-08-27 13:52:54.766433"], ["id", 1]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.5ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 1], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.6ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 12], ["amount_paid", 340.0], ["updated_at", "2018-08-27 13:52:54.779825"], ["id", 2]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.4ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 1], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 440.0], ["updated_at", "2018-08-27 13:52:54.791418"], ["id", 2]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:6
+  [1m[36mWorkLog Load (0.1ms)[0m  [1m[34mSELECT "work_logs".* FROM "work_logs" WHERE "work_logs"."employee_id" = ?[0m  [["employee_id", 2]]
+  ↳ app/models/report.rb:7
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 2], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[36mReport Create (0.3ms)[0m  [1m[32mINSERT INTO "reports" ("pay_period", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pay_period", 1], ["employee_id", 2], ["created_at", "2018-08-27 13:52:54.804488"], ["updated_at", "2018-08-27 13:52:54.804488"]]
+  ↳ app/models/report.rb:14
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "pay_year" = ?, "amount_paid" = ?, "upload_number" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 11], ["pay_year", 2016], ["amount_paid", 120.0], ["upload_number", 43], ["updated_at", "2018-08-27 13:52:54.815294"], ["id", 3]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 2], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 240.0], ["updated_at", "2018-08-27 13:52:54.826041"], ["id", 3]]
+  ↳ app/models/report.rb:23
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 2], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 600.0], ["updated_at", "2018-08-27 13:52:54.839628"], ["id", 3]]
+  ↳ app/models/report.rb:23
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 2], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.4ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 930.0], ["updated_at", "2018-08-27 13:52:54.854445"], ["id", 3]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 2], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 12], ["amount_paid", 1050.0], ["updated_at", "2018-08-27 13:52:54.868567"], ["id", 3]]
+  ↳ app/models/report.rb:23
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 2], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 1170.0], ["updated_at", "2018-08-27 13:52:54.880875"], ["id", 3]]
+  ↳ app/models/report.rb:23
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 2], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 1530.0], ["updated_at", "2018-08-27 13:52:54.895241"], ["id", 3]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 2], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 1860.0], ["updated_at", "2018-08-27 13:52:54.909757"], ["id", 3]]
+  ↳ app/models/report.rb:23
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/report.rb:6
+  [1m[36mWorkLog Load (0.1ms)[0m  [1m[34mSELECT "work_logs".* FROM "work_logs" WHERE "work_logs"."employee_id" = ?[0m  [["employee_id", 3]]
+  ↳ app/models/report.rb:7
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 3], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[36mReport Create (0.6ms)[0m  [1m[32mINSERT INTO "reports" ("pay_period", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pay_period", 1], ["employee_id", 3], ["created_at", "2018-08-27 13:52:54.925361"], ["updated_at", "2018-08-27 13:52:54.925361"]]
+  ↳ app/models/report.rb:14
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "pay_year" = ?, "amount_paid" = ?, "upload_number" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 11], ["pay_year", 2016], ["amount_paid", 230.0], ["upload_number", 43], ["updated_at", "2018-08-27 13:52:54.936323"], ["id", 4]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 3], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 350.0], ["updated_at", "2018-08-27 13:52:54.947169"], ["id", 4]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 3], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.8ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 410.0], ["updated_at", "2018-08-27 13:52:54.959240"], ["id", 4]]
+  ↳ app/models/report.rb:23
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.4ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 3], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 530.0], ["updated_at", "2018-08-27 13:52:54.975130"], ["id", 4]]
+  ↳ app/models/report.rb:23
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 3], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 12], ["amount_paid", 760.0], ["updated_at", "2018-08-27 13:52:54.989370"], ["id", 4]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 3], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 880.0], ["updated_at", "2018-08-27 13:52:55.004029"], ["id", 4]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 3], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 11], ["amount_paid", 940.0], ["updated_at", "2018-08-27 13:52:55.018369"], ["id", 4]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 3], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 12], ["amount_paid", 1060.0], ["updated_at", "2018-08-27 13:52:55.030430"], ["id", 4]]
+  ↳ app/models/report.rb:23
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:6
+  [1m[36mWorkLog Load (0.1ms)[0m  [1m[34mSELECT "work_logs".* FROM "work_logs" WHERE "work_logs"."employee_id" = ?[0m  [["employee_id", 4]]
+  ↳ app/models/report.rb:7
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[36mReport Create (0.2ms)[0m  [1m[32mINSERT INTO "reports" ("pay_period", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pay_period", 1], ["employee_id", 4], ["created_at", "2018-08-27 13:52:55.047314"], ["updated_at", "2018-08-27 13:52:55.047314"]]
+  ↳ app/models/report.rb:14
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "pay_year" = ?, "amount_paid" = ?, "upload_number" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 11], ["pay_year", 2016], ["amount_paid", 150.0], ["upload_number", 43], ["updated_at", "2018-08-27 13:52:55.056322"], ["id", 5]]
+  ↳ app/models/report.rb:23
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[36mReport Create (0.3ms)[0m  [1m[32mINSERT INTO "reports" ("pay_period", "employee_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pay_period", 2], ["employee_id", 4], ["created_at", "2018-08-27 13:52:55.068100"], ["updated_at", "2018-08-27 13:52:55.068100"]]
+  ↳ app/models/report.rb:14
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "pay_year" = ?, "amount_paid" = ?, "upload_number" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 11], ["pay_year", 2016], ["amount_paid", 150.0], ["upload_number", 43], ["updated_at", "2018-08-27 13:52:55.078394"], ["id", 6]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 300.0], ["updated_at", "2018-08-27 13:52:55.090654"], ["id", 6]]
+  ↳ app/models/report.rb:23
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 450.0], ["updated_at", "2018-08-27 13:52:55.105652"], ["id", 6]]
+  ↳ app/models/report.rb:23
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 1], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 12], ["amount_paid", 300.0], ["updated_at", "2018-08-27 13:52:55.117168"], ["id", 5]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 12], ["amount_paid", 600.0], ["updated_at", "2018-08-27 13:52:55.130552"], ["id", 6]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 750.0], ["updated_at", "2018-08-27 13:52:55.144462"], ["id", 6]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.2ms)[0m  [1m[33mUPDATE "reports" SET "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["amount_paid", 900.0], ["updated_at", "2018-08-27 13:52:55.159122"], ["id", 6]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.2ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.3ms)[0m  [1m[33mUPDATE "reports" SET "pay_month" = ?, "pay_year" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_month", 2], ["pay_year", 2015], ["amount_paid", 1050.0], ["updated_at", "2018-08-27 13:52:55.172636"], ["id", 6]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT  "reports".* FROM "reports" WHERE "reports"."employee_id" = ? AND "reports"."pay_period" = ? ORDER BY "reports"."id" ASC LIMIT ?[0m  [["employee_id", 4], ["pay_period", 2], ["LIMIT", 1]]
+  ↳ app/models/report.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/report.rb:23
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/report.rb:23
+  [1m[36mReport Update (0.5ms)[0m  [1m[33mUPDATE "reports" SET "pay_year" = ?, "amount_paid" = ?, "updated_at" = ? WHERE "reports"."id" = ?[0m  [["pay_year", 2016], ["amount_paid", 1200.0], ["updated_at", "2018-08-27 13:52:55.189449"], ["id", 6]]
+  ↳ app/models/report.rb:23
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/report.rb:23
+Redirected to http://localhost:3000/display/43
+Completed 302 Found in 1178ms (ActiveRecord: 553.5ms)
+
+
+Started GET "/display/43" for 172.26.0.1 at 2018-08-27 13:52:55 +0000
+Cannot render console from 172.26.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ReportsController#display as HTML
+  Parameters: {"upload_number"=>"43"}
+  Rendering reports/display.html.erb within layouts/application
+  [1m[36mReport Load (0.3ms)[0m  [1m[34mSELECT "reports".* FROM "reports" WHERE "reports"."upload_number" = ? ORDER BY "reports"."employee_id" ASC, "reports"."pay_year" ASC, "reports"."pay_month" ASC, "reports"."pay_period" ASC[0m  [["upload_number", 43]]
+  ↳ app/views/reports/display.html.erb:19
+  Rendered reports/_report.html.erb (0.7ms)
+  Rendered reports/_report.html.erb (0.1ms)
+  Rendered reports/_report.html.erb (0.1ms)
+  Rendered reports/_report.html.erb (0.1ms)
+  Rendered reports/_report.html.erb (0.1ms)
+  Rendered reports/_report.html.erb (0.1ms)
+  Rendered reports/display.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 45ms (Views: 43.0ms | ActiveRecord: 0.3ms)
+
+
